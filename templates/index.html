@@ -49,10 +49,16 @@
                         {%- endif %}
                         1 week
                     </option>
+                    {% if !args.no_eternal_pasta %}
+                    {% if args.default_expiry == "never" %}
+                    <option selected value="never">
+                        {%- else %}
+                    <option value="never">
+                        {%- endif %}
+                        Never Expire
+                    </option>
+                    {%- endif %}
                 </optgroup>
-                {% if !args.no_eternal_pasta %}
-                <option value="never">Never Expire</option>
-                {%- endif %}
             </select>
         </div>
         {% if args.enable_burn_after %}
@@ -112,6 +118,13 @@
             <label for="syntax-highlight">Syntax</label><br>
             <select style="width: 100%;" name="syntax-highlight" id="syntax-highlight">
                 <option value="none">None</option>
+                <optgroup label="Descriptors">
+                    <!-- no toml support ;-( -->
+                    <option value="json">TOML</option>
+                    <option value="yaml">YAML</option>
+                    <option value="json">JSON</option>
+                    <option value="xml">XML</option>
+                </optgroup>
                 <optgroup label="Source Code">
                     <option value="sh">Bash Shell</option>
                     <option value="c">C</option>
@@ -135,17 +148,17 @@
                     <option value="sc">Scala</option>
                     <option value="swift">Swift</option>
                 </optgroup>
-                <optgroup label="Descriptors">
-                    <!-- no toml support ;-( -->
-                    <option value="json">TOML</option>
-                    <option value="yaml">YAML</option>
-                    <option value="json">JSON</option>
-                    <option value="xml">XML</option>
-                </optgroup>
             </select>
         </div>
         {%- else %}
         <input type="hidden" name="syntax-highlight" value="none">
+        {%- endif %}
+        
+        {% if args.slugs %}
+        <div>
+            <label for="slug">Slug</label>
+            <input style="width: 86%;height: 1.75rem;" type="text" name="slug" id="slug" autofocus>
+        </div>
         {%- endif %}
 
         <div>
@@ -154,7 +167,7 @@
             {%- endif %}
             {% if args.editable %}
             <div>
-                <input type="checkbox" id="editable" name="editable" value="editable">
+                <input type="checkbox" id="editable" name="editable" value="editable" checked="checked">
                 <label for="editable">Editable</label>
             </div>
             {%- endif %}
@@ -166,10 +179,7 @@
             {%- endif %}
         </div>
     </div>
-    {% if args.slugs %}
-    <label>Slug</label>
-    <input type="text" style="width: 100%" name="slug" autofocus>
-    {%- endif %}
+
     <label>Content</label>
     <textarea style="width: 100%; min-height: 100px; margin-bottom: 2em" name="content" autofocus></textarea>
     <div style="overflow:auto;">
@@ -194,6 +204,7 @@
 
 </form>
 
+{% if !args.no_file_upload %}
 <script>
     const hiddenFileButton = document.getElementById('file');
     const attachFileButton = document.getElementById('attach-file-button');
@@ -221,6 +232,7 @@
     };
 
 </script>
+{% endif %}
 
 <style>
     input::file-selector-button {

@@ -1,10 +1,10 @@
 const ANIMAL_NAMES: &[&str] = &[
-    "ant", "eel", "mole", "sloth", "ape", "emu", "monkey", "snail", "bat", "falcon", "mouse",
-    "snake", "bear", "fish", "otter", "spider", "bee", "fly", "parrot", "squid", "bird", "fox",
-    "panda", "swan", "bison", "frog", "pig", "tiger", "camel", "gecko", "pigeon", "toad", "cat",
-    "goat", "pony", "turkey", "cobra", "goose", "pug", "turtle", "crow", "hawk", "rabbit", "viper",
-    "deer", "horse", "rat", "wasp", "dog", "jaguar", "raven", "whale", "dove", "koala", "seal",
-    "wolf", "duck", "lion", "shark", "worm", "eagle", "lizard", "sheep", "zebra",
+    "ant", "eel", "mole", "owl", "ape", "emu", "monkey", "crane", "bat", "boar", "mouse",
+    "snake", "bear", "fish", "vole", "cob", "bee", "fly", "elk", "cow", "bird", "fox",
+    "panda", "swan", "bull", "frog", "pig", "tiger", "yak", "teal", "hare", "toad", "cat",
+    "kite", "pony", "tuna", "mule", "koala", "pug", "clam", "crow", "gull", "rabbit", "ox",
+    "deer", "horse", "rat", "wasp", "dog", "lamb", "ewe", "mice", "dove", "calf", "seal",
+    "wolf", "duck", "lion", "shark", "worm", "ram", "doe", "sheep", "tom",
 ];
 
 pub fn to_animal_names(mut number: u64) -> String {

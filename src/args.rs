@@ -18,13 +18,13 @@ pub struct Args {
     #[clap(long, env = "MICROBIN_AUTH_PASSWORD")]
     pub auth_password: Option<String>,
 
-    #[clap(long, env = "MICROBIN_EDITABLE")]
+    #[clap(long, env = "MICROBIN_EDITABLE", default_value_t = true)]
     pub editable: bool,
 
     #[clap(long, env = "MICROBIN_FOOTER_TEXT")]
     pub footer_text: Option<String>,
 
-    #[clap(long, env = "MICROBIN_HIDE_FOOTER")]
+    #[clap(long, env = "MICROBIN_HIDE_FOOTER", default_value_t = true)]
     pub hide_footer: bool,
 
     #[clap(long, env = "MICROBIN_HIDE_HEADER")]
@@ -36,7 +36,7 @@ pub struct Args {
     #[clap(long, env = "MICROBIN_NO_LISTING")]
     pub no_listing: bool,
 
-    #[clap(long, env = "MICROBIN_HIGHLIGHTSYNTAX")]
+    #[clap(long, env = "MICROBIN_HIGHLIGHTSYNTAX", default_value_t = true)]
     pub highlightsyntax: bool,
 
     #[clap(short, long, env = "MICROBIN_PORT", default_value_t = 8080)]
@@ -60,7 +60,7 @@ pub struct Args {
     #[clap(long, env = "MICROBIN_TITLE")]
     pub title: Option<String>,
 
-    #[clap(short, long, env = "MICROBIN_THREADS", default_value_t = 1)]
+    #[clap(short, long, env = "MICROBIN_THREADS", default_value_t = 3)]
     pub threads: u8,
 
     #[clap(short, long, env = "MICROBIN_GC_DAYS", default_value_t = 90)]
@@ -81,10 +81,10 @@ pub struct Args {
     #[clap(long, env = "MICROBIN_NO_ETERNAL_PASTA")]
     pub no_eternal_pasta: bool,
 
-    #[clap(long, env = "MICROBIN_DEFAULT_EXPIRY", default_value = "24hour")]
+    #[clap(long, env = "MICROBIN_DEFAULT_EXPIRY", default_value = "never")]
     pub default_expiry: String,
 
-    #[clap(short, long, env = "MICROBIN_NO_FILE_UPLOAD")]
+    #[clap(short, long, env = "MICROBIN_NO_FILE_UPLOAD", default_value_t = true)]
     pub no_file_upload: bool,
 
     #[clap(long, env = "MICROBIN_CUSTOM_CSS")]
@@ -93,7 +93,7 @@ pub struct Args {
     #[clap(long, env = "MICROBIN_HASH_IDS")]
     pub hash_ids: bool,
 
-    #[clap(long, env = "MICROBIN_SLUGS")]
+    #[clap(long, env = "MICROBIN_SLUGS", default_value_t = true)]
     pub slugs: bool,
 }
 
